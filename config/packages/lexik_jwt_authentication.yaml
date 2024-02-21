@@ -1,0 +1,5 @@
+lexik_jwt_authentication:
+    secret_key: '%env(resolve:JWT_SECRET_KEY)%' #chemin vers la clé privée
+    public_key: '%env(resolve:JWT_PUBLIC_KEY)%' #chemin vers la clé public
+    pass_phrase: '%env(JWT_PASSPHRASE)%' #phrase de passe pour la clé privée
+    token_ttl: 3600 #durée en scd de la validité du token
