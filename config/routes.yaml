@@ -6,3 +6,7 @@ app_api:
     ressource: ''../src/Controller/Api'
     type: annotation
     prefix: '/api'
+
+avis: 
+    ressource: App\Controller\AvisController
+    type: annotation
