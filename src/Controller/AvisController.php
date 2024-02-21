@@ -35,7 +35,8 @@ class AvisController extends AbstractController
     }
 
     /**
-     * @Route("/", name="avis_create", methods={"POST"})
+     * @Route("/", name="avis_create", methods={'GET", "POST"})
+     * @IsGranted("ROLE_EMPLOYEE")
      */
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -56,6 +57,7 @@ class AvisController extends AbstractController
 
     /**
      * @Route("/{id}", name="avis_update", methods={"PUT"})
+     * * @IsGranted("ROLE_EMPLOYEE)
      */
     public function update(Request $request, EntityManagerInterface $entityManager, Avis $avis): Response
     {
@@ -74,6 +76,7 @@ class AvisController extends AbstractController
 
     /**
      * @Route("/{id}", name="avis_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_EMPLOYEE) 
      */
     public function delete(EntityManagerInterface $entityManager, Avis $avis): Response
     {
