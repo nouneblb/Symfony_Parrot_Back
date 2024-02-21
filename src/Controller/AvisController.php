@@ -85,4 +85,24 @@ class AvisController extends AbstractController
 
         return new Response(null, Response::HTTP_NO_CONTENT);
     }
+
+     /**
+     * @Route("/publish/{id}", name="avis_publish", methods={"PUT"})
+     */
+    public function publishAvis(Request $request, EntityManagerInterface $entityManager, Avis $avis): JsonResponse
+    {
+        // Vérifier si l'avis existe
+        if (!$avis) {
+            return new JsonResponse(['error' => 'Avis introuvable.'], JsonResponse::HTTP_NOT_FOUND);
+        }
+
+        // Mettre à jour l'état de l'avis pour le publier (par exemple, définir un champ "published" à true)
+        $avis->setPublished(true);
+
+        // Enregistrer les changements dans la base de données
+        $entityManager->flush();
+
+        // Retourner une réponse JSON indiquant le succès de l'opération
+        return new JsonResponse(['message' => 'L\'avis a été publié avec succès.'], JsonResponse::HTTP_OK);
+    }
 }
